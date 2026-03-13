@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Alle Förderprogramme 2026 - FoerdercheckPlus</title>
+    <meta name="description"
+        content="Alle staatlichen Förderprogramme aus Bund, Ländern und EU auf einen Blick. Energie, Mobilität, Gründen, Familie und mehr.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://foerdercheckplus.de/foerderungen.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css">
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4VE8HX6XX');
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4VE8HX6XX');
+    </script>
+    <!-- Dark Mode Init (prevents flash) -->
+    <script>
+      (function() {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4VE8HX6XX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4VE8HX6XX');
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2068043467304653"
+         crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- -- NAVBAR ------------------------------------------ -->
+    <script src="header.js"></script>
+
+    <!-- -- PAGE HEADER ------------------------------------- -->
+    <section class="page-hero">
+        <div class="page-hero__inner">
+            <div class="page-hero__eyebrow">📋 Alle Programme</div>
+            <h1 class="page-hero__h1">Alle Förderprogramme 2026</h1>
+            <p class="page-hero__sub">Durchsuchen Sie alle staatlichen Zuschüsse und Kredite aus Bund, Ländern und EU.
+                Nutzen Sie die Suche oder filtern Sie nach Kategorien.</p>
+        </div>
+    </section>
+
+    <!-- -- SEARCH + FILTER ---------------------------------- -->
+    <div class="search-bar">
+        <div class="search-bar__inner">
+            <div class="search-bar__input-wrap">
+                <svg class="search-bar__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <circle cx="9" cy="9" r="6" />
+                    <path d="m15 15 3 3" />
+                </svg>
+                <input id="search-input" class="search-bar__input" type="search"
+                    placeholder="Programm suchen, z.B. Wärmepumpe, Gründer, E-Auto …" autocomplete="off"
+                    aria-label="Förderprogramme suchen">
+            </div>
+            <div class="filter-pills">
+                <button class="filter-pill active" data-cat="">Alle Programme</button>
+                <button class="filter-pill" data-cat="energie">?⚡ Energie &amp; Haus</button>
+                <button class="filter-pill" data-cat="business">💼 Gründen &amp; Business</button>
+                <button class="filter-pill" data-cat="mobil">🚗 Mobilität</button>
+                <button class="filter-pill" data-cat="familie">👨‍👩‍👧 Familie &amp; Bildung</button>
+                <button class="filter-pill" data-cat="wohnen">🏡 Wohnen &amp; Kredit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- -- RESULTS ------------------------------------------- -->
+    <div class="results">
+        <p class="results__meta"><span id="result-count">11</span> Programme gefunden</p>
+        <div class="programs-grid" id="results-grid"></div>
+    </div>
+
+    <!-- -- FOOTER -------------------------------------------- -->
+    <script src="footer.js"></script>
+
+    <script src="search.js"></script>
+    <script>
+        // Navbar burger
+        document.getElementById('burger')?.addEventListener('click', () => {
+            document.getElementById('mobile-nav')?.classList.toggle('open');
+        });
+    </script>
+</body>
+
+</html>

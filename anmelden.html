@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Admin-Anmeldung | FoerderCheckPlus</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { background: var(--surface-2); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
+        .login-card {
+            background: var(--surface);
+            max-width: 440px;
+            margin: 0 auto;
+            border-radius: 24px;
+            padding: 48px 40px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+        }
+        .login-card__title { font-size: 1.75rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+        .login-card__sub { font-size: 0.95rem; color: var(--text-2); margin-bottom: 32px; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-label { display: block; font-weight: 500; color: var(--text); margin-bottom: 8px; font-size: 0.95rem; }
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border-2);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: var(--bg);
+            color: var(--text);
+        }
+        .form-control:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-l); }
+        .btn-login {
+            background: var(--blue);
+            color: #fff;
+            width: 100%;
+            padding: 14px;
+            font-weight: 600;
+            border-radius: 999px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 12px;
+        }
+        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(30,58,138,0.25); }
+        .error-msg { color: #DC2626; font-size: 0.9rem; margin-bottom: 16px; font-weight: 500; display: none; }
+        .brand-link { color: var(--blue); font-weight: 600; text-decoration: none; display: inline-block; margin-bottom: 24px; }
+    </style>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4VE8HX6XX');
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4VE8HX6XX');
+    </script>
+    <!-- Dark Mode Init (prevents flash) -->
+    <script>
+      (function() {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); }
+        else { document.documentElement.removeAttribute('data-theme'); }
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4VE8HX6XX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4VE8HX6XX');
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2068043467304653"
+         crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container" style="padding: 24px;">
+        <div class="login-card">
+            <a href="index.html" class="brand-link">← Zurück zur Startseite</a>
+            <h1 class="login-card__title">Admin-Anmeldung</h1>
+            <p class="login-card__sub">Bitte melden Sie sich an, um das Dashboard zu öffnen.</p>
+
+            <div id="errorMsg" class="error-msg"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Benutzername</label>
+                    <input type="text" id="username" class="form-control" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Passwort</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn-login" id="loginBtn">Anmelden</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const err = document.getElementById('errorMsg');
+            btn.disabled = true;
+            btn.textContent = 'Bitte warten...';
+            err.style.display = 'none';
+
+            try {
+                const isDev = ['5500', '5501', '5502', '3001'].includes(window.location.port);
+                const baseUrl = isDev ? `${window.location.protocol}//${window.location.hostname}:3000` : '';
+                const res = await fetch(`${baseUrl}/api/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        username: document.getElementById('username').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+
+                if (res.ok) {
+                    window.location.href = '/admin.html';
+                } else {
+                    err.textContent = 'Benutzername oder Passwort falsch.';
+                    err.style.display = 'block';
+                }
+            } catch (error) {
+                err.textContent = 'Verbindungsfehler.';
+                err.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Anmelden';
+            }
+        });
+    </script>
+</body>
+</html>
